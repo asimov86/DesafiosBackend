@@ -1,0 +1,20 @@
+div
+        h1='Vista de Productos'
+        br
+        if listExists
+            div
+                table
+                    tr
+                        th='Title'
+                        th='Price'
+                        th='Picture'
+                        each producto in product
+                            tr
+                                td=producto.title
+                                td=producto.price
+                                td
+                                    img(width="150" src=producto.thumbnail)
+        else
+            h3='No se encontraron productos'
+        br
+        a(href="/" type="button")='Agregar un Producto'

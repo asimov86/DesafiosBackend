@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Vista de Productos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+</head>
+
+<body>
+    <div>
+
+            <div>
+                <h1>Vista de Productos</h1>
+                <br>
+
+                <% if(listExists){ %>
+                    <div>
+                        <table>
+                            <tr>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Picture</th>
+                            </tr>
+                            <%product.forEach(function(producto) {%>
+                                <tr>
+                                    <td>
+                                        <%=producto.title%>
+                                    </td>
+                                    <td>
+                                        <%=producto.price%>
+                                    </td>
+                                    <td><img width="150" src=<%=producto.thumbnail%> ></td>
+                                </tr>
+                                <%});%>
+                        </table>
+                    </div>
+                    <% } else{ %>
+                        <h3>No se encontraron productos</h3>
+                        <% } %>
+
+                            <br>
+                            <a href="/" type="button">Cargar un nuevo producto</a>
+
+            </div>
+    </div>
+
+
+</body>
+
+</html>
