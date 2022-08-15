@@ -1,0 +1,24 @@
+{
+  "name": "entregable",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "dev": "nodemon src/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^5.2.0",
+    "handlebars": "^4.7.7",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.1.3",
+    "websockets": "^0.2.0"
+  },
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
