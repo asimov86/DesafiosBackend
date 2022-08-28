@@ -1,1 +1,1 @@
-[{"id":"b19cd2d2-d5d6-4380-97e1-2910cbb43823","timestamp":"8/23/2022, 10:46:45 PM","productos":[{"id":5,"name":"Coca Cola","category":"Bebidas","price":180,"stock":80,"description":"Bebida Coca Cola de lata 355 ml.","image":"https://cdn.shopify.com/s/files/1/0521/4525/8669/products/shutterstock_193222430-2.jpg?v=1610844615"}]}]
+[{"id":1,"timestamp":"8/25/2022, 10:45:31 PM"},{"id":2,"timestamp":"8/25/2022, 10:45:32 PM"}]

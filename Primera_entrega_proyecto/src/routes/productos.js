@@ -1,11 +1,10 @@
 const express = require("express");
 const fs = require("fs");
 const router = express.Router();
-//const { ProductsController } = require('../controller/productos');
-//const archivo = require('../.../productos.txt');
+const { v4: uuidv4 } = require('uuid');
 const authMiddleware = (req, res, next) => {
     console.log("Autenticando");
-    const isAdmin = false;
+    const isAdmin = true;
     let ruta = JSON.stringify(req.route.methods);
     console.log(ruta);
     if (isAdmin) {
@@ -18,11 +17,6 @@ const authMiddleware = (req, res, next) => {
   }
 
 let productos = [];
-
-//Utilizar JSON en las request (Cuerpo)
-//router.use(express.json());
-//router.use(express.urlencoded({extended:true}));
-//router.use(express.static("public"));
 
 class Contenedor{
     constructor(fileName){
@@ -60,7 +54,7 @@ class Contenedor{
             let data = await fs.promises.readFile(`../${this.fileName}.txt`, 'utf-8');
             data = JSON.parse(data);
             
-            let codigo = getRandomCod(1000000, 10000000);//Habria que verificar entre los productos existentes si el codigo que se va a otorgar existe. Sino existe si se puede otorgar, si existe se debe crear otro codigo verificar de nuevo y si no existe si se otorga.
+            let codigo = uuidv4();//Habria que verificar entre los productos existentes si el codigo que se va a otorgar existe. Sino existe si se puede otorgar, si existe se debe crear otro codigo verificar de nuevo y si no existe si se otorga.
             let timestamp = new Date().toLocaleString();
             item.id = data.length + 1;
             item.timestamp = timestamp;
@@ -81,7 +75,7 @@ class Contenedor{
             let data = await fs.promises.readFile(`../${this.fileName}.txt`, 'utf-8');
             data = JSON.parse(data);
             let timestamp = new Date().toLocaleString();
-            let codigo = getRandomCod(1000000, 10000000);//Habria que verificar entre los productos existentes si el codigo que se va a otorgar existe. Sino existe si se puede otorgar, si existe se debe
+            let codigo = uuidv4();//Habria que verificar entre los productos existentes si el codigo que se va a otorgar existe. Sino existe si se puede otorgar, si existe se debe
             item.timestamp = timestamp;
             item.codigo = codigo; 
             let pIndex=data.findIndex((producto => producto.id === prodId));
@@ -154,18 +148,5 @@ router.delete('/:id', authMiddleware, async (req, res) => {
 });
 
 // Fin productos
-
-function getRandomCod(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)+min);
-}
-
-/* const PORT = 8080;
-
-router.listen(PORT, ()=>{
-    console.log(`Servidor escuchando en puerto ${PORT}`);
-})
- */
 
 module.exports = router;
